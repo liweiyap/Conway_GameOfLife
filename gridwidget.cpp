@@ -4,8 +4,7 @@
 
 GridWidget::GridWidget(QWidget* parent) : QWidget(parent)
 {
-    setUniverseBorderColour("#3873b3");
-    setUniverseBorderThickness(6.0);
+    universeBorderColour.setAlpha(255);
 }
 
 QColor GridWidget::getUniverseBorderColour() const
@@ -16,7 +15,6 @@ QColor GridWidget::getUniverseBorderColour() const
 void GridWidget::setUniverseBorderColour(const QColor colour)
 {
     universeBorderColour = colour;
-    universeBorderColour.setAlpha(255);
 }
 
 qreal GridWidget::getUniverseBorderThickness() const
@@ -32,6 +30,7 @@ void GridWidget::setUniverseBorderThickness(const qreal thickness)
 void GridWidget::paintEvent(QPaintEvent* event)
 {
     QPainter painter(this);
+
     QRect universeBorder(0, 0, width(), height());
     painter.setPen(QPen(getUniverseBorderColour(), getUniverseBorderThickness()));
     painter.drawRect(universeBorder);

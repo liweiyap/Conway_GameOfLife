@@ -25,8 +25,8 @@ protected:
     void paintEvent(QPaintEvent* event);
 
 private:
-    QColor universeBorderColour;
-    qreal universeBorderThickness;
+    QColor universeBorderColour = "#3873b3";
+    qreal universeBorderThickness = 6.0;
 };
 
 #endif // GRIDWIDGET_H
