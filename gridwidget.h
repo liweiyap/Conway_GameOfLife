@@ -13,10 +13,11 @@ class GridWidget : public QWidget
     Q_PROPERTY(QColor universeBorderColour READ getUniverseBorderColour WRITE setUniverseBorderColour DESIGNABLE true)
     Q_PROPERTY(qreal universeBorderThickness READ getUniverseBorderThickness WRITE setUniverseBorderThickness DESIGNABLE true)
     Q_PROPERTY(QColor universeFieldColour READ getUniverseFieldColour WRITE setUniverseFieldColour DESIGNABLE true)
+    Q_PROPERTY(QColor cellFieldColour READ getCellFieldColour WRITE setCellFieldColour DESIGNABLE true)
 
 public:
     explicit GridWidget(QWidget* parent = nullptr);
-    ~GridWidget() = default;
+    ~GridWidget();
 
     size_t getRowCount() const;
     void setRowCount(const size_t nRows);
@@ -33,6 +34,9 @@ public:
     QColor getUniverseFieldColour() const;
     void setUniverseFieldColour(const QColor colour);
 
+    QColor getCellFieldColour() const;
+    void setCellFieldColour(const QColor colour);
+
 protected:
     void paintEvent(QPaintEvent* event);
 
@@ -46,6 +50,7 @@ private:
     QColor universeBorderColour = "#3873b3";
     qreal universeBorderThickness = 8.0;
     QColor universeFieldColour = Qt::white;
+    QColor cellFieldColour = Qt::black;
 };
 
 #endif // GRIDWIDGET_H
