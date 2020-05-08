@@ -1,4 +1,7 @@
+#include <cmath>
+
 #include <QPainter>
+#include <QMouseEvent>
 
 #include "gridwidget.h"
 
@@ -98,23 +101,46 @@ void GridWidget::paintEvent(QPaintEvent* event)
     painter.setPen(QPen(getUniverseBorderColour(), getUniverseBorderThickness()));
     painter.drawRect(universeBorder);
 
-    qreal universeWidth = width() - 1.5 * getUniverseBorderThickness();
-    qreal universeHeight = height() - 1.5 * getUniverseBorderThickness();
-    qreal cellWidth = universeWidth / getRowCount();
-    qreal cellHeight = universeHeight / getColumnCount();
-
     for (size_t rowIdx = 0; rowIdx < getRowCount(); ++rowIdx)
     {
         for (size_t columnIdx = 0; columnIdx < getColumnCount(); ++columnIdx)
         {
             if (grid[rowIdx][columnIdx] == 1)
             {
-                qreal cellLeftIdx = 0.75 * getUniverseBorderThickness() + cellWidth * columnIdx;
-                qreal cellTopIdx = 0.75 * getUniverseBorderThickness() + cellHeight * rowIdx;
-                QRect cellField(cellLeftIdx, cellTopIdx, cellWidth, cellHeight);
+                qreal cellLeftIdx = 0.75 * getUniverseBorderThickness() + calcCellWidth() * columnIdx;
+                qreal cellTopIdx = 0.75 * getUniverseBorderThickness() + calcCellHeight() * rowIdx;
+                QRect cellField(cellLeftIdx, cellTopIdx, calcCellWidth(), calcCellHeight());
                 painter.setBrush(QBrush(getCellFieldColour()));
                 painter.fillRect(cellField, painter.brush());
             }
         }
     }
+}
+
+void GridWidget::mousePressEvent(QMouseEvent* event)
+{
+    size_t rowIdx = static_cast<size_t>(std::floor((event->y() - 0.75 * getUniverseBorderThickness()) / calcCellHeight()));
+    size_t columnIdx = static_cast<size_t>(std::floor((event->x() - 0.75 * getUniverseBorderThickness()) / calcCellWidth()));
+    grid[rowIdx][columnIdx] ^= 1;
+    update();
+}
+
+qreal GridWidget::calcUniverseWidth()
+{
+    return width() - 1.5 * getUniverseBorderThickness();
+}
+
+qreal GridWidget::calcUniverseHeight()
+{
+    return height() - 1.5 * getUniverseBorderThickness();
+}
+
+qreal GridWidget::calcCellWidth()
+{
+    return calcUniverseWidth() / getRowCount();
+}
+
+qreal GridWidget::calcCellHeight()
+{
+    return calcUniverseHeight() / getColumnCount();
 }

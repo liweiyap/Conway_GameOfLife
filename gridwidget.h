@@ -39,6 +39,7 @@ public:
 
 protected:
     void paintEvent(QPaintEvent* event);
+    void mousePressEvent(QMouseEvent* event);
 
 private:
     /* game settings */
@@ -51,6 +52,11 @@ private:
     qreal universeBorderThickness = 8.0;
     QColor universeFieldColour = Qt::white;
     QColor cellFieldColour = Qt::black;
+
+    qreal calcUniverseWidth();
+    qreal calcUniverseHeight();
+    qreal calcCellWidth();
+    qreal calcCellHeight();
 };
 
 #endif // GRIDWIDGET_H
