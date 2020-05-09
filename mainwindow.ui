@@ -14,17 +14,71 @@
    <string>Conway's Game Of Life</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="verticalLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>269</x>
-      <y>10</y>
-      <width>471</width>
-      <height>451</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="gridLayout"/>
-   </widget>
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0">
+     <layout class="QHBoxLayout" name="mainLayout">
+      <item>
+       <layout class="QVBoxLayout" name="controlLayout">
+        <item>
+         <widget class="QLabel" name="liveCellColourInfo">
+          <property name="styleSheet">
+           <string notr="true">font: 22pt &quot;Trebuchet MS&quot;;</string>
+          </property>
+          <property name="text">
+           <string>Black cells are alive.</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignHCenter|Qt::AlignTop</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="deadCellColourInfo">
+          <property name="styleSheet">
+           <string notr="true">font: 22pt &quot;Trebuchet MS&quot;;</string>
+          </property>
+          <property name="text">
+           <string>White cells are dead.</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignHCenter|Qt::AlignTop</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="clickInfo">
+          <property name="styleSheet">
+           <string notr="true">font: 22pt &quot;Trebuchet MS&quot;;</string>
+          </property>
+          <property name="text">
+           <string>Click a cell to change it.</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignHCenter|Qt::AlignTop</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="controlVerticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="gridLayout"/>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

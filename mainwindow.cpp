@@ -9,6 +9,8 @@ MainWindow::MainWindow(QWidget* parent)
 {
     ui->setupUi(this);
 
+    ui->mainLayout->setStretchFactor(ui->controlLayout, 4);
+    ui->mainLayout->setStretchFactor(ui->gridLayout, 6);
     ui->gridLayout->addWidget(grid);
 }
 
