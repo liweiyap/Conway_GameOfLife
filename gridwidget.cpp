@@ -12,11 +12,11 @@ GridWidget::GridWidget(QWidget* parent) : QWidget(parent)
     universeFieldColour.setAlpha(255);
     cellFieldColour.setAlpha(255);
 
-    grid = new int*[getRowCount()];
-    for (int rowIdx = 0; rowIdx < getRowCount(); ++rowIdx)
+    grid = new int*[rowCount];
+    for (int rowIdx = 0; rowIdx < rowCount; ++rowIdx)
     {
-        grid[rowIdx] = new int[getColumnCount()];
-        for (int columnIdx = 0; columnIdx < getColumnCount(); ++columnIdx)
+        grid[rowIdx] = new int[columnCount];
+        for (int columnIdx = 0; columnIdx < columnCount; ++columnIdx)
         {
             grid[rowIdx][columnIdx] = ((rowIdx + columnIdx) & 1) ? 0 : 1;
         }
@@ -25,7 +25,7 @@ GridWidget::GridWidget(QWidget* parent) : QWidget(parent)
 
 GridWidget::~GridWidget()
 {
-    for (int rowIdx = 0; rowIdx < getRowCount(); ++rowIdx)
+    for (int rowIdx = 0; rowIdx < rowCount; ++rowIdx)
     {
         delete[] grid[rowIdx];
     }
@@ -97,35 +97,43 @@ void GridWidget::setCellFieldColour(const QColor colour)
 void GridWidget::paintEvent(QPaintEvent* event)
 {
     QPainter painter(this);
-
-    QRect universeBorder(0, 0, width(), height());
-    painter.setBrush(QBrush(getUniverseFieldColour()));
-    painter.fillRect(universeBorder, painter.brush());
-    painter.setPen(QPen(getUniverseBorderColour(), getUniverseBorderThickness()));
-    painter.drawRect(universeBorder);
-
-    for (int rowIdx = 0; rowIdx < getRowCount(); ++rowIdx)
-    {
-        for (int columnIdx = 0; columnIdx < getColumnCount(); ++columnIdx)
-        {
-            if (grid[rowIdx][columnIdx] == 1)
-            {
-                qreal cellLeftIdx = 0.75 * getUniverseBorderThickness() + calcCellWidth() * columnIdx;
-                qreal cellTopIdx = 0.75 * getUniverseBorderThickness() + calcCellHeight() * rowIdx;
-                QRect cellField(cellLeftIdx, cellTopIdx, calcCellWidth(), calcCellHeight());
-                painter.setBrush(QBrush(getCellFieldColour()));
-                painter.fillRect(cellField, painter.brush());
-            }
-        }
-    }
+    paintUniverseBorder(painter);
+    paintCellGrid(painter);
 }
 
 void GridWidget::mousePressEvent(QMouseEvent* event)
 {
-    int rowIdx = static_cast<int>(std::floor((event->y() - 0.75 * getUniverseBorderThickness()) / calcCellHeight()));
-    int columnIdx = static_cast<int>(std::floor((event->x() - 0.75 * getUniverseBorderThickness()) / calcCellWidth()));
+    size_t rowIdx = static_cast<size_t>(std::floor((event->y() - 0.75 * universeBorderThickness) / calcCellHeight()));
+    size_t columnIdx = static_cast<size_t>(std::floor((event->x() - 0.75 * universeBorderThickness) / calcCellWidth()));
     grid[rowIdx][columnIdx] ^= 1;
     update();
+}
+
+void GridWidget::paintUniverseBorder(QPainter& painter)
+{
+    QRect universeBorder(0, 0, width(), height());
+    painter.setBrush(QBrush(universeFieldColour));
+    painter.fillRect(universeBorder, painter.brush());
+    painter.setPen(QPen(universeBorderColour, universeBorderThickness));
+    painter.drawRect(universeBorder);
+}
+
+void GridWidget::paintCellGrid(QPainter& painter)
+{
+    for (int rowIdx = 0; rowIdx < rowCount; ++rowIdx)
+    {
+        for (int columnIdx = 0; columnIdx < columnCount; ++columnIdx)
+        {
+            if (grid[rowIdx][columnIdx] == 1)
+            {
+                qreal cellLeftIdx = 0.75 * universeBorderThickness + calcCellWidth() * columnIdx;
+                qreal cellTopIdx = 0.75 * universeBorderThickness + calcCellHeight() * rowIdx;
+                QRect cellField(cellLeftIdx, cellTopIdx, calcCellWidth(), calcCellHeight());
+                painter.setBrush(QBrush(cellFieldColour));
+                painter.fillRect(cellField, painter.brush());
+            }
+        }
+    }
 }
 
 void GridWidget::resetGrid()
@@ -149,20 +157,20 @@ void GridWidget::resetGrid()
 
 qreal GridWidget::calcUniverseWidth()
 {
-    return width() - 1.5 * getUniverseBorderThickness();
+    return width() - 1.5 * universeBorderThickness;
 }
 
 qreal GridWidget::calcUniverseHeight()
 {
-    return height() - 1.5 * getUniverseBorderThickness();
+    return height() - 1.5 * universeBorderThickness;
 }
 
 qreal GridWidget::calcCellWidth()
 {
-    return calcUniverseWidth() / getRowCount();
+    return calcUniverseWidth() / rowCount;
 }
 
 qreal GridWidget::calcCellHeight()
 {
-    return calcUniverseHeight() / getColumnCount();
+    return calcUniverseHeight() / columnCount;
 }

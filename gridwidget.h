@@ -43,6 +43,10 @@ protected:
     void paintEvent(QPaintEvent* event);
     void mousePressEvent(QMouseEvent* event);
 
+private slots:
+    void paintUniverseBorder(QPainter& painter);
+    void paintCellGrid(QPainter& painter);
+
 private:
     /* game settings */
     int rowCount = 20;
