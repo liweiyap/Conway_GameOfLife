@@ -59,6 +59,13 @@
          </widget>
         </item>
         <item>
+         <widget class="QSlider" name="rowCountSlider">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
          <spacer name="controlVerticalSpacer">
           <property name="orientation">
            <enum>Qt::Vertical</enum>

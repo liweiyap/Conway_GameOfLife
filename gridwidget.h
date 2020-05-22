@@ -8,8 +8,8 @@ namespace Ui { class gridwidget; }
 class GridWidget : public QWidget
 {
     Q_OBJECT
-    Q_PROPERTY(size_t rowCount READ getRowCount WRITE setRowCount DESIGNABLE true)
-    Q_PROPERTY(size_t columnCount READ getColumnCount WRITE setColumnCount DESIGNABLE true)
+    Q_PROPERTY(int rowCount READ getRowCount WRITE setRowCount DESIGNABLE true)
+    Q_PROPERTY(int columnCount READ getColumnCount WRITE setColumnCount DESIGNABLE true)
     Q_PROPERTY(QColor universeBorderColour READ getUniverseBorderColour WRITE setUniverseBorderColour DESIGNABLE true)
     Q_PROPERTY(qreal universeBorderThickness READ getUniverseBorderThickness WRITE setUniverseBorderThickness DESIGNABLE true)
     Q_PROPERTY(QColor universeFieldColour READ getUniverseFieldColour WRITE setUniverseFieldColour DESIGNABLE true)
@@ -19,11 +19,10 @@ public:
     explicit GridWidget(QWidget* parent = nullptr);
     ~GridWidget();
 
-    size_t getRowCount() const;
-    void setRowCount(const size_t nRows);
+    int getRowCount() const;
 
-    size_t getColumnCount() const;
-    void setColumnCount(const size_t nColumnss);
+    int getColumnCount() const;
+    void setColumnCount(const int nColumnss);
 
     QColor getUniverseBorderColour() const;
     void setUniverseBorderColour(const QColor colour);
@@ -37,15 +36,20 @@ public:
     QColor getCellFieldColour() const;
     void setCellFieldColour(const QColor colour);
 
+public slots:
+    void setRowCount(const int nRows);
+
 protected:
     void paintEvent(QPaintEvent* event);
     void mousePressEvent(QMouseEvent* event);
 
 private:
     /* game settings */
-    size_t rowCount = 20;
-    size_t columnCount = 20;
+    int rowCount = 20;
+    int columnCount = 20;
     int** grid;
+
+    void resetGrid();
 
     /* design settings */
     QColor universeBorderColour = "#3873b3";
