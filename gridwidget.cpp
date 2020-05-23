@@ -2,6 +2,7 @@
 
 #include <QPainter>
 #include <QMouseEvent>
+#include <QTimer>
 
 #include "gridwidget.h"
 #include "gamelogic.h"
@@ -9,6 +10,7 @@
 GridWidget::GridWidget(QWidget* parent) : QWidget(parent)
 {
     setTransparency();
+    setTimer();
     createChequeredGrid();
 }
 
@@ -147,6 +149,13 @@ void GridWidget::createChequeredGrid()
     }
 }
 
+void GridWidget::setTimer()
+{
+    timer = new QTimer(this);
+    timer->setInterval(300);
+    connect(timer, SIGNAL(timeout()), this, SLOT(evolveOnce()));
+}
+
 void GridWidget::setTransparency()
 {
     universeBorderColour.setAlpha(255);
@@ -178,4 +187,9 @@ void GridWidget::evolveOnce()
 {
     evolveNextGeneration(grid, rowCount, columnCount);
     update();
+}
+
+void GridWidget::evolveContinuous()
+{
+    timer->start();
 }

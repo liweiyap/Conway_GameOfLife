@@ -8,13 +8,13 @@ MainWindow::MainWindow(QWidget* parent)
     , grid(new GridWidget(this))
 {
     ui->setupUi(this);
-
-    setLayout();
     ui->gridLayout->addWidget(grid);
 
+    setLayout();
     setRowCountSlider();
     setColumnCountSlider();
     setEvolveOnceButton();
+    setStartOrStopEvolvingButton();
 }
 
 MainWindow::~MainWindow()
@@ -55,6 +55,12 @@ void MainWindow::setEvolveOnceButton()
 {
     ui->evolveOnceButton->setStyleSheet("QPushButton {background-color: #3873b3; color: white;}");
     connect(ui->evolveOnceButton, SIGNAL(clicked()), grid, SLOT(evolveOnce()));
+}
+
+void MainWindow::setStartOrStopEvolvingButton()
+{
+    ui->startOrStopEvolvingButton->setStyleSheet("QPushButton {background-color: #3873b3; color: white;}");
+    connect(ui->startOrStopEvolvingButton, SIGNAL(clicked()), grid, SLOT(evolveContinuous()));
 }
 
 void MainWindow::setRowCountInfo(const int& nRows)

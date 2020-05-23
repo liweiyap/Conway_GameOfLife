@@ -25,6 +25,7 @@ private:
     void setRowCountSlider();
     void setColumnCountSlider();
     void setEvolveOnceButton();
+    void setStartOrStopEvolvingButton();
 
 private slots:
     void setRowCountInfo(const int& nRows);

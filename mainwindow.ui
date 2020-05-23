@@ -118,6 +118,19 @@
          </widget>
         </item>
         <item>
+         <widget class="QPushButton" name="startOrStopEvolvingButton">
+          <property name="font">
+           <font>
+            <family>Trebuchet MS</family>
+            <pointsize>27</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Start evolving</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <spacer name="controlVerticalSpacer">
           <property name="orientation">
            <enum>Qt::Vertical</enum>

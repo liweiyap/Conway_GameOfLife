@@ -45,9 +45,11 @@ private:
     int rowCount = 20;
     int columnCount = 20;
     int** grid;
+    QTimer* timer;
 
     void createChequeredGrid();
     void deleteGrid();
+    void setTimer();
 
     /* design settings */
     QColor universeBorderColour = "#3873b3";
@@ -67,6 +69,7 @@ private:
 
 private slots:
     void evolveOnce();
+    void evolveContinuous();
 };
 
 #endif // GRIDWIDGET_H
