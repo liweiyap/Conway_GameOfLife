@@ -19,7 +19,7 @@
      <layout class="QHBoxLayout" name="mainLayout">
       <item>
        <layout class="QVBoxLayout" name="controlLayout">
-        <item>
+        <item alignment="Qt::AlignHCenter">
          <widget class="QLabel" name="liveCellColourInfo">
           <property name="styleSheet">
            <string notr="true">font: 22pt &quot;Trebuchet MS&quot;;</string>
@@ -32,7 +32,7 @@
           </property>
          </widget>
         </item>
-        <item>
+        <item alignment="Qt::AlignHCenter">
          <widget class="QLabel" name="deadCellColourInfo">
           <property name="styleSheet">
            <string notr="true">font: 22pt &quot;Trebuchet MS&quot;;</string>
@@ -45,7 +45,7 @@
           </property>
          </widget>
         </item>
-        <item>
+        <item alignment="Qt::AlignHCenter">
          <widget class="QLabel" name="clickInfo">
           <property name="styleSheet">
            <string notr="true">font: 22pt &quot;Trebuchet MS&quot;;</string>
@@ -104,7 +104,7 @@
           </property>
          </widget>
         </item>
-        <item>
+        <item alignment="Qt::AlignHCenter">
          <widget class="QPushButton" name="evolveOnceButton">
           <property name="font">
            <font>
@@ -117,7 +117,7 @@
           </property>
          </widget>
         </item>
-        <item>
+        <item alignment="Qt::AlignHCenter">
          <widget class="QPushButton" name="startOrStopEvolvingButton">
           <property name="font">
            <font>
