@@ -35,6 +35,7 @@ void MainWindow::setRowCountSlider()
     ui->rowCountSlider->setTickPosition(QSlider::TicksBelow);
 
     connect(ui->rowCountSlider, SIGNAL(valueChanged(int)), grid, SLOT(setRowCount(const int&)));
+    connect(ui->rowCountSlider, SIGNAL(valueChanged(int)), this, SLOT(setRowCountInfo(const int&)));
 }
 
 void MainWindow::setColumnCountSlider()
@@ -45,4 +46,25 @@ void MainWindow::setColumnCountSlider()
     ui->columnCountSlider->setTickPosition(QSlider::TicksBelow);
 
     connect(ui->columnCountSlider, SIGNAL(valueChanged(int)), grid, SLOT(setColumnCount(const int&)));
+    connect(ui->columnCountSlider, SIGNAL(valueChanged(int)), this, SLOT(setColumnCountInfo(const int&)));
+}
+
+void MainWindow::setRowCountInfo(const int& nRows)
+{
+    int newStrLen = snprintf(NULL, 0, "No. of rows: %d", nRows) + 1;
+    char buffer[newStrLen];
+    snprintf(buffer, newStrLen, "No. of rows: %d", nRows);
+
+    QString newStr = buffer;
+    ui->rowCountSliderInfo->setText(newStr);
+}
+
+void MainWindow::setColumnCountInfo(const int& nColumns)
+{
+    int newStrLen = snprintf(NULL, 0, "No. of columns: %d", nColumns) + 1;
+    char buffer[newStrLen];
+    snprintf(buffer, newStrLen, "No. of columns: %d", nColumns);
+
+    QString newStr = buffer;
+    ui->columnCountSliderInfo->setText(newStr);
 }

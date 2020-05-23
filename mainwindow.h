@@ -24,5 +24,9 @@ private:
     void setLayout();
     void setRowCountSlider();
     void setColumnCountSlider();
+
+private slots:
+    void setRowCountInfo(const int& nRows);
+    void setColumnCountInfo(const int& nColumns);
 };
 #endif // MAINWINDOW_H

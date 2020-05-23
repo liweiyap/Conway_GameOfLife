@@ -51,7 +51,7 @@
            <string notr="true">font: 22pt &quot;Trebuchet MS&quot;;</string>
           </property>
           <property name="text">
-           <string>Click a cell to change it.</string>
+           <string>Click a cell to change its state.</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignHCenter|Qt::AlignTop</set>
@@ -67,7 +67,7 @@
            </font>
           </property>
           <property name="text">
-           <string>No. of rows:</string>
+           <string>No. of rows: 20</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
@@ -90,7 +90,7 @@
            </font>
           </property>
           <property name="text">
-           <string>No. of columns:</string>
+           <string>No. of columns: 20</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>

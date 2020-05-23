@@ -48,7 +48,7 @@ private:
     int columnCount = 20;
     int** grid;
 
-    void createGrid();
+    void createChequeredGrid();
     void deleteGrid();
 
     /* design settings */
