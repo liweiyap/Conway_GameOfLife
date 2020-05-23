@@ -81,7 +81,7 @@ void MainWindow::setFilledGridButton()
 void MainWindow::setChequeredGridButton()
 {
     ui->chequeredGridButton->setStyleSheet("QPushButton {background-color: #3873b3; color: white;}");
-    connect(ui->chequeredGridButton, SIGNAL(clicked()), this, SLOT(resetToChequeredGrid()));
+    connect(ui->chequeredGridButton, SIGNAL(clicked()), this, SLOT(resetGrid()));
 }
 
 void MainWindow::setRandomGridButton()
@@ -131,12 +131,12 @@ void MainWindow::editStartOrStopEvolvingButton()
     }
 }
 
-void MainWindow::resetToChequeredGrid()
+void MainWindow::resetGrid()
 {
     grid->stopEvolve();
-    editStartOrStopEvolvingButton();
+    editStartOrStopEvolvingButtonHelper("Start");
     grid->setDoEvolve(false);
     grid->deleteGrid();
-    grid->createChequeredGrid();
+    grid->createGrid(grid->Chequered);
     grid->update();
 }

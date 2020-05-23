@@ -11,7 +11,7 @@ GridWidget::GridWidget(QWidget* parent) : QWidget(parent)
 {
     setTransparency();
     setTimer();
-    createChequeredGrid();
+    createGrid(Chequered);
 }
 
 GridWidget::~GridWidget()
@@ -29,7 +29,7 @@ void GridWidget::setRowCount(const int& nRows)
 {
     deleteGrid();
     rowCount = nRows;
-    createChequeredGrid();
+    createGrid(Chequered);
     update();
 }
 
@@ -42,7 +42,7 @@ void GridWidget::setColumnCount(const int& nColumns)
 {
     deleteGrid();
     columnCount = nColumns;
-    createChequeredGrid();
+    createGrid(Chequered);
     update();
 }
 
@@ -145,6 +145,14 @@ void GridWidget::deleteGrid()
         delete[] grid[rowIdx];
     }
     delete[] grid;
+}
+
+void GridWidget::createGrid(cellPopulationOption pattern)
+{
+    if (pattern == Chequered)
+    {
+        createChequeredGrid();
+    }
 }
 
 void GridWidget::createChequeredGrid()

@@ -36,11 +36,19 @@ public:
     bool getDoEvolve() const;
     void setDoEvolve(const bool& cmd);
 
+    enum cellPopulationOption
+    {
+        Empty,
+        Filled,
+        Chequered,
+        Random
+    };
+
 public slots:
     void setRowCount(const int& nRows);
     void setColumnCount(const int& nColumns);
 
-    void createChequeredGrid();
+    void createGrid(cellPopulationOption pattern);
     void deleteGrid();
 
     void stopEvolve();
@@ -59,6 +67,8 @@ private:
 
     void setTimer();
     void evolveContinuous();
+
+    void createChequeredGrid();
 
     /* design settings */
     QColor universeBorderColour = "#3873b3";

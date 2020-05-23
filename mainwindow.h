@@ -38,6 +38,6 @@ private slots:
     void setColumnCountInfo(const int& nColumns);
     void editStartOrStopEvolvingButton();
 
-    void resetToChequeredGrid();
+    void resetGrid();
 };
 #endif // MAINWINDOW_H
