@@ -3,8 +3,6 @@
 
 #include <QWidget>
 
-namespace Ui { class gridwidget; }
-
 class GridWidget : public QWidget
 {
     Q_OBJECT
@@ -66,6 +64,9 @@ private:
 
     void paintUniverseBorder(QPainter& painter);
     void paintCellGrid(QPainter& painter);
+
+private slots:
+    void evolveOnce();
 };
 
 #endif // GRIDWIDGET_H

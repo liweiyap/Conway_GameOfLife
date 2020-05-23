@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget* parent)
 
     setRowCountSlider();
     setColumnCountSlider();
+    setEvolveOnceButton();
 }
 
 MainWindow::~MainWindow()
@@ -48,6 +49,12 @@ void MainWindow::setColumnCountSlider()
 
     connect(ui->columnCountSlider, SIGNAL(valueChanged(int)), grid, SLOT(setColumnCount(const int&)));
     connect(ui->columnCountSlider, SIGNAL(valueChanged(int)), this, SLOT(setColumnCountInfo(const int&)));
+}
+
+void MainWindow::setEvolveOnceButton()
+{
+    ui->evolveOnceButton->setStyleSheet("QPushButton {background-color: #3873b3; color: white;}");
+    connect(ui->evolveOnceButton, SIGNAL(clicked()), grid, SLOT(evolveOnce()));
 }
 
 void MainWindow::setRowCountInfo(const int& nRows)

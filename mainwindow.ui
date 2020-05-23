@@ -105,6 +105,19 @@
          </widget>
         </item>
         <item>
+         <widget class="QPushButton" name="evolveOnceButton">
+          <property name="font">
+           <font>
+            <family>Trebuchet MS</family>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Evolve once</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <spacer name="controlVerticalSpacer">
           <property name="orientation">
            <enum>Qt::Vertical</enum>

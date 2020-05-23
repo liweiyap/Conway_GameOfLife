@@ -4,6 +4,7 @@
 #include <QMouseEvent>
 
 #include "gridwidget.h"
+#include "gamelogic.h"
 
 GridWidget::GridWidget(QWidget* parent) : QWidget(parent)
 {
@@ -171,4 +172,10 @@ qreal GridWidget::calcCellWidth()
 qreal GridWidget::calcCellHeight()
 {
     return calcUniverseHeight() / rowCount;
+}
+
+void GridWidget::evolveOnce()
+{
+    evolveNextGeneration(grid, rowCount, columnCount);
+    update();
 }
