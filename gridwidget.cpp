@@ -85,6 +85,11 @@ void GridWidget::setCellFieldColour(const QColor& colour)
     cellFieldColour = colour;
 }
 
+bool GridWidget::getDoEvolve() const
+{
+    return doEvolve;
+}
+
 void GridWidget::paintEvent(QPaintEvent* event)
 {
     QPainter painter(this);
@@ -156,6 +161,16 @@ void GridWidget::setTimer()
     connect(timer, SIGNAL(timeout()), this, SLOT(evolveOnce()));
 }
 
+void GridWidget::evolveContinuous()
+{
+    timer->start();
+}
+
+void GridWidget::stopEvolve()
+{
+    timer->stop();
+}
+
 void GridWidget::setTransparency()
 {
     universeBorderColour.setAlpha(255);
@@ -189,7 +204,16 @@ void GridWidget::evolveOnce()
     update();
 }
 
-void GridWidget::evolveContinuous()
+void GridWidget::setEvolveDecision()
 {
-    timer->start();
+    doEvolve = !doEvolve;
+
+    if (doEvolve)
+    {
+        evolveContinuous();
+    }
+    else
+    {
+        stopEvolve();
+    }
 }

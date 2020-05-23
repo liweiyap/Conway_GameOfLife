@@ -32,6 +32,8 @@ public:
     QColor getCellFieldColour() const;
     void setCellFieldColour(const QColor& colour);
 
+    bool getDoEvolve() const;
+
 public slots:
     void setRowCount(const int& nRows);
     void setColumnCount(const int& nColumns);
@@ -46,10 +48,13 @@ private:
     int columnCount = 20;
     int** grid;
     QTimer* timer;
+    bool doEvolve = false;
 
     void createChequeredGrid();
     void deleteGrid();
     void setTimer();
+    void evolveContinuous();
+    void stopEvolve();
 
     /* design settings */
     QColor universeBorderColour = "#3873b3";
@@ -69,7 +74,7 @@ private:
 
 private slots:
     void evolveOnce();
-    void evolveContinuous();
+    void setEvolveDecision();
 };
 
 #endif // GRIDWIDGET_H

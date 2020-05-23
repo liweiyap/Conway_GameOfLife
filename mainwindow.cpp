@@ -60,7 +60,18 @@ void MainWindow::setEvolveOnceButton()
 void MainWindow::setStartOrStopEvolvingButton()
 {
     ui->startOrStopEvolvingButton->setStyleSheet("QPushButton {background-color: #3873b3; color: white;}");
-    connect(ui->startOrStopEvolvingButton, SIGNAL(clicked()), grid, SLOT(evolveContinuous()));
+    connect(ui->startOrStopEvolvingButton, SIGNAL(clicked()), this, SLOT(editStartOrStopEvolvingButton()));
+    connect(ui->startOrStopEvolvingButton, SIGNAL(clicked()), grid, SLOT(setEvolveDecision()));
+}
+
+void MainWindow::editStartOrStopEvolvingButtonHelper(const char* cmd)
+{
+    int newStrLen = snprintf(NULL, 0, "%s evolving", cmd) + 1;
+    char buffer[newStrLen];
+    snprintf(buffer, newStrLen, "%s evolving", cmd);
+
+    QString newStr = buffer;
+    ui->startOrStopEvolvingButton->setText(newStr);
 }
 
 void MainWindow::setRowCountInfo(const int& nRows)
@@ -81,4 +92,16 @@ void MainWindow::setColumnCountInfo(const int& nColumns)
 
     QString newStr = buffer;
     ui->columnCountSliderInfo->setText(newStr);
+}
+
+void MainWindow::editStartOrStopEvolvingButton()
+{
+    if (grid->getDoEvolve())
+    {
+        editStartOrStopEvolvingButtonHelper("Start");
+    }
+    else
+    {
+        editStartOrStopEvolvingButtonHelper("Stop");
+    }
 }

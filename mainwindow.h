@@ -26,9 +26,11 @@ private:
     void setColumnCountSlider();
     void setEvolveOnceButton();
     void setStartOrStopEvolvingButton();
+    void editStartOrStopEvolvingButtonHelper(const char* cmd);
 
 private slots:
     void setRowCountInfo(const int& nRows);
     void setColumnCountInfo(const int& nColumns);
+    void editStartOrStopEvolvingButton();
 };
 #endif // MAINWINDOW_H
