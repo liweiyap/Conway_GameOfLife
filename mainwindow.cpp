@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget* parent)
     ui->gridLayout->addWidget(grid);
 
     setRowCountSlider();
+    setColumnCountSlider();
 }
 
 MainWindow::~MainWindow()
@@ -34,4 +35,14 @@ void MainWindow::setRowCountSlider()
     ui->rowCountSlider->setTickPosition(QSlider::TicksBelow);
 
     connect(ui->rowCountSlider, SIGNAL(valueChanged(int)), grid, SLOT(setRowCount(const int&)));
+}
+
+void MainWindow::setColumnCountSlider()
+{
+    ui->columnCountSlider->setMaximum(50);
+    ui->columnCountSlider->setMinimum(1);
+    ui->columnCountSlider->setValue(20);
+    ui->columnCountSlider->setTickPosition(QSlider::TicksBelow);
+
+    connect(ui->columnCountSlider, SIGNAL(valueChanged(int)), grid, SLOT(setColumnCount(const int&)));
 }

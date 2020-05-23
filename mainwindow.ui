@@ -59,7 +59,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label">
+         <widget class="QLabel" name="rowCountSliderInfo">
           <property name="font">
            <font>
             <family>Trebuchet MS</family>
@@ -76,6 +76,29 @@
         </item>
         <item>
          <widget class="QSlider" name="rowCountSlider">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="columnCountSliderInfo">
+          <property name="font">
+           <font>
+            <family>Trebuchet MS</family>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>No. of columns:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSlider" name="columnCountSlider">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>

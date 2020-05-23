@@ -20,24 +20,23 @@ public:
     ~GridWidget();
 
     int getRowCount() const;
-
     int getColumnCount() const;
-    void setColumnCount(const int nColumnss);
 
     QColor getUniverseBorderColour() const;
-    void setUniverseBorderColour(const QColor colour);
+    void setUniverseBorderColour(const QColor& colour);
 
     qreal getUniverseBorderThickness() const;
-    void setUniverseBorderThickness(const qreal thickness);
+    void setUniverseBorderThickness(const qreal& thickness);
 
     QColor getUniverseFieldColour() const;
-    void setUniverseFieldColour(const QColor colour);
+    void setUniverseFieldColour(const QColor& colour);
 
     QColor getCellFieldColour() const;
-    void setCellFieldColour(const QColor colour);
+    void setCellFieldColour(const QColor& colour);
 
 public slots:
     void setRowCount(const int& nRows);
+    void setColumnCount(const int& nColumns);
 
 protected:
     void paintEvent(QPaintEvent* event);
@@ -57,6 +56,8 @@ private:
     qreal universeBorderThickness = 8.0;
     QColor universeFieldColour = Qt::white;
     QColor cellFieldColour = Qt::black;
+
+    void setTransparency();
 
     qreal calcUniverseWidth();
     qreal calcUniverseHeight();

@@ -23,5 +23,6 @@ private:
 
     void setLayout();
     void setRowCountSlider();
+    void setColumnCountSlider();
 };
 #endif // MAINWINDOW_H

@@ -7,10 +7,7 @@
 
 GridWidget::GridWidget(QWidget* parent) : QWidget(parent)
 {
-    universeBorderColour.setAlpha(255);
-    universeFieldColour.setAlpha(255);
-    cellFieldColour.setAlpha(255);
-
+    setTransparency();
     createGrid();
 }
 
@@ -37,9 +34,12 @@ int GridWidget::getColumnCount() const
     return columnCount;
 }
 
-void GridWidget::setColumnCount(const int nColumns)
+void GridWidget::setColumnCount(const int& nColumns)
 {
+    deleteGrid();
     columnCount = nColumns;
+    createGrid();
+    update();
 }
 
 QColor GridWidget::getUniverseBorderColour() const
@@ -47,7 +47,7 @@ QColor GridWidget::getUniverseBorderColour() const
     return universeBorderColour;
 }
 
-void GridWidget::setUniverseBorderColour(const QColor colour)
+void GridWidget::setUniverseBorderColour(const QColor& colour)
 {
     universeBorderColour = colour;
 }
@@ -57,7 +57,7 @@ qreal GridWidget::getUniverseBorderThickness() const
     return universeBorderThickness;
 }
 
-void GridWidget::setUniverseBorderThickness(const qreal thickness)
+void GridWidget::setUniverseBorderThickness(const qreal& thickness)
 {
     universeBorderThickness = thickness;
 }
@@ -67,7 +67,7 @@ QColor GridWidget::getUniverseFieldColour() const
     return universeFieldColour;
 }
 
-void GridWidget::setUniverseFieldColour(const QColor colour)
+void GridWidget::setUniverseFieldColour(const QColor& colour)
 {
     universeFieldColour = colour;
 }
@@ -77,7 +77,7 @@ QColor GridWidget::getCellFieldColour() const
     return cellFieldColour;
 }
 
-void GridWidget::setCellFieldColour(const QColor colour)
+void GridWidget::setCellFieldColour(const QColor& colour)
 {
     cellFieldColour = colour;
 }
@@ -144,6 +144,13 @@ void GridWidget::createGrid()
             grid[rowIdx][columnIdx] = ((rowIdx + columnIdx) & 1) ? 0 : 1;
         }
     }
+}
+
+void GridWidget::setTransparency()
+{
+    universeBorderColour.setAlpha(255);
+    universeFieldColour.setAlpha(255);
+    cellFieldColour.setAlpha(255);
 }
 
 qreal GridWidget::calcUniverseWidth()
