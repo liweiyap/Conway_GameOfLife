@@ -18,6 +18,7 @@ MainWindow::MainWindow(QWidget* parent)
 
 MainWindow::~MainWindow()
 {
+    delete grid;
     delete ui;
 }
 
