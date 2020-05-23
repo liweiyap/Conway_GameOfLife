@@ -20,5 +20,8 @@ public:
 private:
     Ui::MainWindow* ui;
     GridWidget* grid;
+
+    void setLayout();
+    void setRowCountSlider();
 };
 #endif // MAINWINDOW_H
