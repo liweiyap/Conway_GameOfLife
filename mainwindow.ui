@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>750</width>
+    <width>800</width>
     <height>475</height>
    </rect>
   </property>
@@ -103,6 +103,62 @@
            <enum>Qt::Horizontal</enum>
           </property>
          </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="cellPopulationOptionsLayout">
+          <item alignment="Qt::AlignHCenter">
+           <widget class="QPushButton" name="emptyGridButton">
+            <property name="font">
+             <font>
+              <family>Trebuchet MS</family>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Clear all</string>
+            </property>
+           </widget>
+          </item>
+          <item alignment="Qt::AlignHCenter">
+           <widget class="QPushButton" name="filledGridButton">
+            <property name="font">
+             <font>
+              <family>Trebuchet MS</family>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Fill all</string>
+            </property>
+           </widget>
+          </item>
+          <item alignment="Qt::AlignHCenter">
+           <widget class="QPushButton" name="chequeredGridButton">
+            <property name="font">
+             <font>
+              <family>Trebuchet MS</family>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Chequered</string>
+            </property>
+           </widget>
+          </item>
+          <item alignment="Qt::AlignHCenter">
+           <widget class="QPushButton" name="randomGridButton">
+            <property name="font">
+             <font>
+              <family>Trebuchet MS</family>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Random</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
         <item alignment="Qt::AlignHCenter">
          <widget class="QPushButton" name="evolveOnceButton">

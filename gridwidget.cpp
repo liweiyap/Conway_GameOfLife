@@ -16,6 +16,7 @@ GridWidget::GridWidget(QWidget* parent) : QWidget(parent)
 
 GridWidget::~GridWidget()
 {
+    delete timer;
     deleteGrid();
 }
 
@@ -88,6 +89,11 @@ void GridWidget::setCellFieldColour(const QColor& colour)
 bool GridWidget::getDoEvolve() const
 {
     return doEvolve;
+}
+
+void GridWidget::setDoEvolve(const bool& cmd)
+{
+    doEvolve = cmd;
 }
 
 void GridWidget::paintEvent(QPaintEvent* event)

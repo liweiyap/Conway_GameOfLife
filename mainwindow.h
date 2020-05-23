@@ -26,11 +26,18 @@ private:
     void setColumnCountSlider();
     void setEvolveOnceButton();
     void setStartOrStopEvolvingButton();
+    void setEmptyGridButton();
+    void setFilledGridButton();
+    void setChequeredGridButton();
+    void setRandomGridButton();
+
     void editStartOrStopEvolvingButtonHelper(const char* cmd);
 
 private slots:
     void setRowCountInfo(const int& nRows);
     void setColumnCountInfo(const int& nColumns);
     void editStartOrStopEvolvingButton();
+
+    void resetToChequeredGrid();
 };
 #endif // MAINWINDOW_H

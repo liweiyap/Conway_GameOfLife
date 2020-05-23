@@ -15,6 +15,10 @@ MainWindow::MainWindow(QWidget* parent)
     setColumnCountSlider();
     setEvolveOnceButton();
     setStartOrStopEvolvingButton();
+    setEmptyGridButton();
+    setFilledGridButton();
+    setChequeredGridButton();
+    setRandomGridButton();
 }
 
 MainWindow::~MainWindow()
@@ -64,6 +68,27 @@ void MainWindow::setStartOrStopEvolvingButton()
     connect(ui->startOrStopEvolvingButton, SIGNAL(clicked()), grid, SLOT(setEvolveDecision()));
 }
 
+void MainWindow::setEmptyGridButton()
+{
+    ui->emptyGridButton->setStyleSheet("QPushButton {background-color: #3873b3; color: white;}");
+}
+
+void MainWindow::setFilledGridButton()
+{
+    ui->filledGridButton->setStyleSheet("QPushButton {background-color: #3873b3; color: white;}");
+}
+
+void MainWindow::setChequeredGridButton()
+{
+    ui->chequeredGridButton->setStyleSheet("QPushButton {background-color: #3873b3; color: white;}");
+    connect(ui->chequeredGridButton, SIGNAL(clicked()), this, SLOT(resetToChequeredGrid()));
+}
+
+void MainWindow::setRandomGridButton()
+{
+    ui->randomGridButton->setStyleSheet("QPushButton {background-color: #3873b3; color: white;}");
+}
+
 void MainWindow::editStartOrStopEvolvingButtonHelper(const char* cmd)
 {
     int newStrLen = snprintf(NULL, 0, "%s evolving", cmd) + 1;
@@ -104,4 +129,14 @@ void MainWindow::editStartOrStopEvolvingButton()
     {
         editStartOrStopEvolvingButtonHelper("Stop");
     }
+}
+
+void MainWindow::resetToChequeredGrid()
+{
+    grid->stopEvolve();
+    editStartOrStopEvolvingButton();
+    grid->setDoEvolve(false);
+    grid->deleteGrid();
+    grid->createChequeredGrid();
+    grid->update();
 }

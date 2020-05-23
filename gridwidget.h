@@ -12,6 +12,7 @@ class GridWidget : public QWidget
     Q_PROPERTY(qreal universeBorderThickness READ getUniverseBorderThickness WRITE setUniverseBorderThickness DESIGNABLE true)
     Q_PROPERTY(QColor universeFieldColour READ getUniverseFieldColour WRITE setUniverseFieldColour DESIGNABLE true)
     Q_PROPERTY(QColor cellFieldColour READ getCellFieldColour WRITE setCellFieldColour DESIGNABLE true)
+    Q_PROPERTY(bool doEvolve READ getDoEvolve WRITE setDoEvolve DESIGNABLE true)
 
 public:
     explicit GridWidget(QWidget* parent = nullptr);
@@ -33,10 +34,16 @@ public:
     void setCellFieldColour(const QColor& colour);
 
     bool getDoEvolve() const;
+    void setDoEvolve(const bool& cmd);
 
 public slots:
     void setRowCount(const int& nRows);
     void setColumnCount(const int& nColumns);
+
+    void createChequeredGrid();
+    void deleteGrid();
+
+    void stopEvolve();
 
 protected:
     void paintEvent(QPaintEvent* event);
@@ -50,11 +57,8 @@ private:
     QTimer* timer;
     bool doEvolve = false;
 
-    void createChequeredGrid();
-    void deleteGrid();
     void setTimer();
     void evolveContinuous();
-    void stopEvolve();
 
     /* design settings */
     QColor universeBorderColour = "#3873b3";
