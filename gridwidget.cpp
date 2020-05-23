@@ -4,7 +4,6 @@
 #include <QMouseEvent>
 
 #include "gridwidget.h"
-#include <iostream>
 
 GridWidget::GridWidget(QWidget* parent) : QWidget(parent)
 {
@@ -12,24 +11,12 @@ GridWidget::GridWidget(QWidget* parent) : QWidget(parent)
     universeFieldColour.setAlpha(255);
     cellFieldColour.setAlpha(255);
 
-    grid = new int*[rowCount];
-    for (int rowIdx = 0; rowIdx < rowCount; ++rowIdx)
-    {
-        grid[rowIdx] = new int[columnCount];
-        for (int columnIdx = 0; columnIdx < columnCount; ++columnIdx)
-        {
-            grid[rowIdx][columnIdx] = ((rowIdx + columnIdx) & 1) ? 0 : 1;
-        }
-    }
+    createGrid();
 }
 
 GridWidget::~GridWidget()
 {
-    for (int rowIdx = 0; rowIdx < rowCount; ++rowIdx)
-    {
-        delete[] grid[rowIdx];
-    }
-    delete[] grid;
+    deleteGrid();
 }
 
 int GridWidget::getRowCount() const
@@ -37,10 +24,11 @@ int GridWidget::getRowCount() const
     return rowCount;
 }
 
-void GridWidget::setRowCount(const int nRows)
+void GridWidget::setRowCount(const int& nRows)
 {
+    deleteGrid();
     rowCount = nRows;
-    resetGrid();
+    createGrid();
     update();
 }
 
@@ -103,8 +91,8 @@ void GridWidget::paintEvent(QPaintEvent* event)
 
 void GridWidget::mousePressEvent(QMouseEvent* event)
 {
-    size_t rowIdx = static_cast<size_t>(std::floor((event->y() - 0.75 * universeBorderThickness) / calcCellHeight()));
-    size_t columnIdx = static_cast<size_t>(std::floor((event->x() - 0.75 * universeBorderThickness) / calcCellWidth()));
+    int rowIdx = static_cast<int>(std::floor((event->y() - 0.75 * universeBorderThickness) / calcCellHeight()));
+    int columnIdx = static_cast<int>(std::floor((event->x() - 0.75 * universeBorderThickness) / calcCellWidth()));
     grid[rowIdx][columnIdx] ^= 1;
     update();
 }
@@ -136,19 +124,22 @@ void GridWidget::paintCellGrid(QPainter& painter)
     }
 }
 
-void GridWidget::resetGrid()
+void GridWidget::deleteGrid()
 {
-    for (int rowIdx = 0; rowIdx < getRowCount(); ++rowIdx)
+    for (int rowIdx = 0; rowIdx < rowCount; ++rowIdx)
     {
         delete[] grid[rowIdx];
     }
     delete[] grid;
+}
 
-    grid = new int*[getRowCount()];
-    for (int rowIdx = 0; rowIdx < getRowCount(); ++rowIdx)
+void GridWidget::createGrid()
+{
+    grid = new int*[rowCount];
+    for (int rowIdx = 0; rowIdx < rowCount; ++rowIdx)
     {
-        grid[rowIdx] = new int[getColumnCount()];
-        for (int columnIdx = 0; columnIdx < getColumnCount(); ++columnIdx)
+        grid[rowIdx] = new int[columnCount];
+        for (int columnIdx = 0; columnIdx < columnCount; ++columnIdx)
         {
             grid[rowIdx][columnIdx] = ((rowIdx + columnIdx) & 1) ? 0 : 1;
         }
@@ -167,10 +158,10 @@ qreal GridWidget::calcUniverseHeight()
 
 qreal GridWidget::calcCellWidth()
 {
-    return calcUniverseWidth() / rowCount;
+    return calcUniverseWidth() / columnCount;
 }
 
 qreal GridWidget::calcCellHeight()
 {
-    return calcUniverseHeight() / columnCount;
+    return calcUniverseHeight() / rowCount;
 }

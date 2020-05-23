@@ -37,15 +37,11 @@ public:
     void setCellFieldColour(const QColor colour);
 
 public slots:
-    void setRowCount(const int nRows);
+    void setRowCount(const int& nRows);
 
 protected:
     void paintEvent(QPaintEvent* event);
     void mousePressEvent(QMouseEvent* event);
-
-private slots:
-    void paintUniverseBorder(QPainter& painter);
-    void paintCellGrid(QPainter& painter);
 
 private:
     /* game settings */
@@ -53,7 +49,8 @@ private:
     int columnCount = 20;
     int** grid;
 
-    void resetGrid();
+    void createGrid();
+    void deleteGrid();
 
     /* design settings */
     QColor universeBorderColour = "#3873b3";
@@ -65,6 +62,9 @@ private:
     qreal calcUniverseHeight();
     qreal calcCellWidth();
     qreal calcCellHeight();
+
+    void paintUniverseBorder(QPainter& painter);
+    void paintCellGrid(QPainter& painter);
 };
 
 #endif // GRIDWIDGET_H
