@@ -19,6 +19,19 @@
      <layout class="QHBoxLayout" name="mainLayout">
       <item>
        <layout class="QVBoxLayout" name="controlLayout">
+        <item>
+         <spacer name="controlVerticalSpacer0">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
         <item alignment="Qt::AlignHCenter">
          <widget class="QLabel" name="liveCellColourInfo">
           <property name="styleSheet">
@@ -57,6 +70,19 @@
            <set>Qt::AlignHCenter|Qt::AlignTop</set>
           </property>
          </widget>
+        </item>
+        <item>
+         <spacer name="controlVerticalSpacer1">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
         </item>
         <item>
          <widget class="QLabel" name="rowCountSliderInfo">
@@ -160,6 +186,32 @@
           </item>
          </layout>
         </item>
+        <item>
+         <spacer name="controlVerticalSpacer2">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item alignment="Qt::AlignHCenter">
+         <widget class="QLabel" name="generationCountInfo">
+          <property name="font">
+           <font>
+            <family>Trebuchet MS</family>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Generation: 0</string>
+          </property>
+         </widget>
+        </item>
         <item alignment="Qt::AlignHCenter">
          <widget class="QPushButton" name="evolveOnceButton">
           <property name="font">
@@ -187,7 +239,69 @@
          </widget>
         </item>
         <item>
-         <spacer name="controlVerticalSpacer">
+         <layout class="QHBoxLayout" name="generationSpeedLayout">
+          <item>
+           <widget class="QLabel" name="fastestSpeedInfo">
+            <property name="font">
+             <font>
+              <family>Trebuchet MS</family>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>fast</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSlider" name="generationSpeedSlider">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="slowestSpeedInfo">
+            <property name="font">
+             <font>
+              <family>Trebuchet MS</family>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>slow</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer name="controlVerticalSpacer3">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item alignment="Qt::AlignHCenter">
+         <widget class="QLabel" name="signature">
+          <property name="font">
+           <font>
+            <family>Trebuchet MS</family>
+           </font>
+          </property>
+          <property name="text">
+           <string>© 2020 Li-Wei Yap</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="controlVerticalSpacer4">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
           </property>
