@@ -13,10 +13,10 @@ Given a board with *m* by *n* cells, each cell has an initial state *live* (1) o
   <br><i>Source: https://qualityswdev.com/2011/07/31/conways-game-of-life-in-scala/</i>
 </p>
 
-1. Any live cell with fewer than two live neighbors dies, as if caused by under-population *(inability to reproduce?)*.
-2. Any live cell with two or three live neighbors lives on to the next generation *(ideal population density)*.
-3. Any live cell with more than three live neighbors dies, as if by over-population *(scarce nutrients)*.
-4. Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction *(ideal population density)*.
+1. Any live cell with fewer than two live neighbours dies, as if caused by under-population *(inability to reproduce?)*.
+2. Any live cell with two or three live neighbours lives on to the next generation *(ideal population density)*.
+3. Any live cell with more than three live neighbours dies, as if by over-population *(scarce nutrients)*.
+4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction *(ideal population density)*.
 
 ## Demo
 
