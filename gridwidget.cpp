@@ -249,11 +249,13 @@ void GridWidget::setTimer()
 void GridWidget::evolveContinuous()
 {
     timer->start();
+    emit universeSizeNotAdjustable(true);
 }
 
 void GridWidget::stopEvolve()
 {
     timer->stop();
+    emit universeSizeAdjustable(true);
 }
 
 void GridWidget::setTransparency()

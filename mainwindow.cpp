@@ -11,7 +11,6 @@ MainWindow::MainWindow(QWidget* parent)
     ui->gridLayout->addWidget(grid);
     setLayout();
 
-    /* MainWindow is the sender of signals */
     setRowCountSlider();
     setColumnCountSlider();
     setEvolveOnceButton();
@@ -20,8 +19,6 @@ MainWindow::MainWindow(QWidget* parent)
     setFilledGridButton();
     setChequeredGridButton();
     setRandomGridButton();
-
-    /* GridWidget is the sender of signals */
     connect(grid, SIGNAL(generationCountChanged(const int&)), this, SLOT(setGenerationCountInfo(const int&)));
 }
 
@@ -46,6 +43,9 @@ void MainWindow::setRowCountSlider()
 
     connect(ui->rowCountSlider, SIGNAL(valueChanged(int)), grid, SLOT(setRowCount(const int&)));
     connect(ui->rowCountSlider, SIGNAL(valueChanged(int)), this, SLOT(setRowCountInfo(const int&)));
+
+    connect(grid, SIGNAL(universeSizeNotAdjustable(const bool&)), ui->rowCountSlider, SLOT(setDisabled(bool)));
+    connect(grid, SIGNAL(universeSizeAdjustable(const bool&)), ui->rowCountSlider, SLOT(setEnabled(bool)));
 }
 
 void MainWindow::setColumnCountSlider()
@@ -57,6 +57,9 @@ void MainWindow::setColumnCountSlider()
 
     connect(ui->columnCountSlider, SIGNAL(valueChanged(int)), grid, SLOT(setColumnCount(const int&)));
     connect(ui->columnCountSlider, SIGNAL(valueChanged(int)), this, SLOT(setColumnCountInfo(const int&)));
+
+    connect(grid, SIGNAL(universeSizeNotAdjustable(const bool&)), ui->columnCountSlider, SLOT(setDisabled(bool)));
+    connect(grid, SIGNAL(universeSizeAdjustable(const bool&)), ui->columnCountSlider, SLOT(setEnabled(bool)));
 }
 
 void MainWindow::setEvolveOnceButton()
