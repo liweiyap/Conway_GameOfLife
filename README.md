@@ -10,6 +10,7 @@ Given a board with *m* by *n* cells, each cell has an initial state *live* (1) o
 
 <p align="center">
   <img height="250" src="assets/rules.jpg">
+  <br><i>Source: https://qualityswdev.com/2011/07/31/conways-game-of-life-in-scala/</i>
 </p>
 
 1. Any live cell with fewer than two live neighbors dies, as if caused by under-population *(symbiosis?)*.
