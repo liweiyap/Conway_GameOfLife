@@ -260,12 +260,14 @@ void GridWidget::evolveContinuous()
 {
     timer->start();
     emit universeSizeAdjustable(false);
+    this->setAttribute(Qt::WA_TransparentForMouseEvents, true);
 }
 
 void GridWidget::stopEvolve()
 {
     timer->stop();
     emit universeSizeAdjustable(true);
+    this->setAttribute(Qt::WA_TransparentForMouseEvents, false);
 }
 
 void GridWidget::setTransparency()
