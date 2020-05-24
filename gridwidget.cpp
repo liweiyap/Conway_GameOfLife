@@ -13,7 +13,7 @@ GridWidget::GridWidget(QWidget* parent) : QWidget(parent)
 {
     setTransparency();
     setTimer();
-    createGrid(Chequered);
+    createGrid(lastDefaultPattern);
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
 }
 
@@ -32,7 +32,7 @@ void GridWidget::setRowCount(const int& nRows)
 {
     deleteGrid();
     rowCount = nRows;
-    createGrid(Chequered);
+    createGrid(lastDefaultPattern);
     update();
 }
 
@@ -45,7 +45,7 @@ void GridWidget::setColumnCount(const int& nColumns)
 {
     deleteGrid();
     columnCount = nColumns;
-    createGrid(Chequered);
+    createGrid(lastDefaultPattern);
     update();
 }
 
@@ -134,17 +134,6 @@ void GridWidget::mousePressEvent(QMouseEvent* event)
     update();
 }
 
-void GridWidget::mouseMoveEvent(QMouseEvent* event)
-{
-    int rowIdx = static_cast<int>(std::floor((event->y() - 0.75 * universeBorderThickness) / calcCellHeight()));
-    int columnIdx = static_cast<int>(std::floor((event->x() - 0.75 * universeBorderThickness) / calcCellWidth()));
-    if (grid[rowIdx][columnIdx] == 0)
-    {
-        grid[rowIdx][columnIdx] = 1;
-        update();
-    }
-}
-
 void GridWidget::paintUniverseBorder(QPainter& painter)
 {
     QRect universeBorder(0, 0, width(), height());
@@ -183,6 +172,8 @@ void GridWidget::deleteGrid()
 
 void GridWidget::createGrid(cellPopulationOption pattern)
 {
+    lastDefaultPattern = pattern;
+
     if (pattern == Empty)
     {
         createEmptyGrid();

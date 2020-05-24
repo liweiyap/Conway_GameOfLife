@@ -61,7 +61,6 @@ public slots:
 protected:
     void paintEvent(QPaintEvent* event) override;
     void mousePressEvent(QMouseEvent* event) override;
-    void mouseMoveEvent(QMouseEvent *event) override;
 
 signals:
     void generationCountChanged(const int& nGenerations);
@@ -75,6 +74,7 @@ private:
     QTimer* timer;
     bool doEvolve = false;
     int generationCount = 0;
+    cellPopulationOption lastDefaultPattern = Chequered;
 
     void setTimer();
     void evolveContinuous();
