@@ -33,4 +33,4 @@ My UI design follows very closely that of [Anjana Sofia Vakil](http://vakila.git
 
 ## License
 
-[GNU General Public License v3.0](https://github.com/liweiyap/Conway_GameOfLife/blob/master/LICENSE)
+[GNU General Public License v3.0](https://github.com/liweiyap/Conway_GameOfLife/blob/master/LICENSE) © Li-Wei Yap
