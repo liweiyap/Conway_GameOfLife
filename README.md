@@ -27,6 +27,10 @@ Given a board with *m* by *n* cells, each cell has an initial state *live* (1) o
 * Qt (tested with version 5.14.2)
 * Qt Creator (tested with version 4.12.1)
 
+## Acknowlegements
+
+My UI design follows very closely that of [Anjana Sofia Vakil](http://vakila.github.io/rc-projects/game-of-life/). The source code and the implementation, however, are different; hers is in any case made in JavaScript.
+
 ## License
 
 [GNU General Public License v3.0](https://github.com/liweiyap/Conway_GameOfLife/blob/master/LICENSE)
