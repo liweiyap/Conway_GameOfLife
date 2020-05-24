@@ -38,6 +38,6 @@ private slots:
     void setColumnCountInfo(const int& nColumns);
     void editStartOrStopEvolvingButton();
 
-    void resetGrid();
+    void resetGrid(GridWidget::cellPopulationOption pattern);
 };
 #endif // MAINWINDOW_H
