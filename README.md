@@ -1,7 +1,9 @@
 # Conway_GameOfLife
+
 This is an implementation of Conway's Game of Life in C++. Build and run it directly with [Qt Creator](https://www.qt.io/download).
 
 ## Description
+
 According to [Wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life), "the **Game of Life**, also known simply as **Life**, is a cellular automaton devised by the British mathematician John Horton Conway in 1970."
 
 Given a board with *m* by *n* cells, each cell has an initial state *live* (1) or *dead* (0). Each cell interacts with its [eight neighbours](https://en.wikipedia.org/wiki/Moore_neighborhood) (horizontal, vertical, or diagonal) using the following four rules:
@@ -16,6 +18,7 @@ Given a board with *m* by *n* cells, each cell has an initial state *live* (1) o
 4. Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction *(ideal population density)*.
 
 ## Requirements
+
 * Qt 5.14.2
 * Qt Creator 4.12.0
 
@@ -24,4 +27,5 @@ Given a board with *m* by *n* cells, each cell has an initial state *live* (1) o
 *coming soon...*
 
 ## License
+
 [GNU General Public License v3.0](https://github.com/liweiyap/Conway_GameOfLife/blob/master/LICENSE)
