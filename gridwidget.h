@@ -59,8 +59,9 @@ public slots:
     void stopEvolve();
 
 protected:
-    void paintEvent(QPaintEvent* event);
-    void mousePressEvent(QMouseEvent* event);
+    void paintEvent(QPaintEvent* event) override;
+    void mousePressEvent(QMouseEvent* event) override;
+    void mouseMoveEvent(QMouseEvent *event) override;
 
 signals:
     void generationCountChanged(const int& nGenerations);

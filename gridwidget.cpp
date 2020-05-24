@@ -134,6 +134,17 @@ void GridWidget::mousePressEvent(QMouseEvent* event)
     update();
 }
 
+void GridWidget::mouseMoveEvent(QMouseEvent* event)
+{
+    int rowIdx = static_cast<int>(std::floor((event->y() - 0.75 * universeBorderThickness) / calcCellHeight()));
+    int columnIdx = static_cast<int>(std::floor((event->x() - 0.75 * universeBorderThickness) / calcCellWidth()));
+    if (grid[rowIdx][columnIdx] == 0)
+    {
+        grid[rowIdx][columnIdx] = 1;
+        update();
+    }
+}
+
 void GridWidget::paintUniverseBorder(QPainter& painter)
 {
     QRect universeBorder(0, 0, width(), height());
