@@ -65,17 +65,19 @@ void MainWindow::setStartOrStopEvolvingButton()
 {
     ui->startOrStopEvolvingButton->setStyleSheet("QPushButton {background-color: #3873b3; color: white;}");
     connect(ui->startOrStopEvolvingButton, SIGNAL(clicked()), this, SLOT(editStartOrStopEvolvingButton()));
-    connect(ui->startOrStopEvolvingButton, SIGNAL(clicked()), grid, SLOT(setEvolveDecision()));
+    connect(ui->startOrStopEvolvingButton, SIGNAL(clicked()), grid, SLOT(toggleEvolveDecision()));
 }
 
 void MainWindow::setEmptyGridButton()
 {
     ui->emptyGridButton->setStyleSheet("QPushButton {background-color: #3873b3; color: white;}");
+    connect(ui->emptyGridButton, &QPushButton::clicked, this, [this]{resetGrid(grid->Empty);});
 }
 
 void MainWindow::setFilledGridButton()
 {
     ui->filledGridButton->setStyleSheet("QPushButton {background-color: #3873b3; color: white;}");
+    connect(ui->filledGridButton, &QPushButton::clicked, this, [this]{resetGrid(grid->Filled);});
 }
 
 void MainWindow::setChequeredGridButton()
@@ -87,6 +89,7 @@ void MainWindow::setChequeredGridButton()
 void MainWindow::setRandomGridButton()
 {
     ui->randomGridButton->setStyleSheet("QPushButton {background-color: #3873b3; color: white;}");
+    connect(ui->randomGridButton, &QPushButton::clicked, this, [this]{resetGrid(grid->Random);});
 }
 
 void MainWindow::editStartOrStopEvolvingButtonHelper(const char* cmd)

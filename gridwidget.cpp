@@ -1,4 +1,6 @@
 #include <cmath>
+#include <cstdlib>
+#include <ctime>
 
 #include <QPainter>
 #include <QMouseEvent>
@@ -12,6 +14,7 @@ GridWidget::GridWidget(QWidget* parent) : QWidget(parent)
     setTransparency();
     setTimer();
     createGrid(Chequered);
+    std::srand(static_cast<unsigned int>(std::time(nullptr)));
 }
 
 GridWidget::~GridWidget()
@@ -149,9 +152,41 @@ void GridWidget::deleteGrid()
 
 void GridWidget::createGrid(cellPopulationOption pattern)
 {
-    if (pattern == Chequered)
+    if (pattern == Empty)
+    {
+        createEmptyGrid();
+    }
+    else if (pattern == Filled)
+    {
+        createFilledGrid();
+    }
+    else if (pattern == Chequered)
     {
         createChequeredGrid();
+    }
+    else if (pattern == Random)
+    {
+        createRandomGrid();
+    }
+}
+
+void GridWidget::createEmptyGrid()
+{
+    grid = new int*[rowCount];
+    for (int rowIdx = 0; rowIdx < rowCount; ++rowIdx)
+    {
+        grid[rowIdx] = new int[columnCount];
+        std::fill(grid[rowIdx], grid[rowIdx] + columnCount, 0);
+    }
+}
+
+void GridWidget::createFilledGrid()
+{
+    grid = new int*[rowCount];
+    for (int rowIdx = 0; rowIdx < rowCount; ++rowIdx)
+    {
+        grid[rowIdx] = new int[columnCount];
+        std::fill(grid[rowIdx], grid[rowIdx] + columnCount, 1);
     }
 }
 
@@ -165,6 +200,32 @@ void GridWidget::createChequeredGrid()
         {
             grid[rowIdx][columnIdx] = ((rowIdx + columnIdx) & 1) ? 0 : 1;
         }
+    }
+}
+
+void GridWidget::createRandomGrid()
+{
+    grid = new int*[rowCount];
+    for (int rowIdx = 0; rowIdx < rowCount; ++rowIdx)
+    {
+        grid[rowIdx] = new int[columnCount];
+        for (int columnIdx = 0; columnIdx < columnCount; ++columnIdx)
+        {
+            grid[rowIdx][columnIdx] = randomCellStateGenerator();
+        }
+    }
+}
+
+int GridWidget::randomCellStateGenerator()
+{
+    int randNum = rand() % 10;
+    if (randNum < 5)
+    {
+        return 0;
+    }
+    else
+    {
+        return 1;
     }
 }
 
@@ -218,7 +279,7 @@ void GridWidget::evolveOnce()
     update();
 }
 
-void GridWidget::setEvolveDecision()
+void GridWidget::toggleEvolveDecision()
 {
     doEvolve = !doEvolve;
 

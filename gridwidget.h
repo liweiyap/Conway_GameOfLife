@@ -67,8 +67,12 @@ private:
 
     void setTimer();
     void evolveContinuous();
+    int randomCellStateGenerator();
 
+    void createEmptyGrid();
+    void createFilledGrid();
     void createChequeredGrid();
+    void createRandomGrid();
 
     /* design settings */
     QColor universeBorderColour = "#3873b3";
@@ -88,7 +92,7 @@ private:
 
 private slots:
     void evolveOnce();
-    void setEvolveDecision();
+    void toggleEvolveDecision();
 };
 
 #endif // GRIDWIDGET_H
