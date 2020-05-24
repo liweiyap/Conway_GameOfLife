@@ -62,7 +62,6 @@ protected:
 
 signals:
     void generationCountChanged(const int& nGenerations);
-    void universeSizeNotAdjustable(const bool& cmd);
     void universeSizeAdjustable(const bool& cmd);
 
 private:
