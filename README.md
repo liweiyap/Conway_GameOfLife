@@ -4,7 +4,7 @@ This is an implementation of Conway's Game of Life in C++. Build and run it dire
 
 ## Description
 
-According to [Wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life), "the **Game of Life**, also known simply as **Life**, is a cellular automaton devised by the British mathematician John Horton Conway in 1970."
+According to [Wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life), "the **Game of Life**, also known simply as **Life**, is a cellular automaton devised by the British mathematician John Horton Conway in 1970".
 
 Given a board with *m* by *n* cells, each cell has an initial state *live* (1) or *dead* (0). Each cell interacts with its [eight neighbours](https://en.wikipedia.org/wiki/Moore_neighborhood) (horizontal, vertical, or diagonal) using the following four rules:
 
