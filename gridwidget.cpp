@@ -59,6 +59,16 @@ void GridWidget::setGenerationCount(const int& nGenerations)
     generationCount = nGenerations;
 }
 
+int GridWidget::getTimerInterval() const
+{
+    return timer->interval();
+}
+
+void GridWidget::setTimerInterval(const int& msec)
+{
+    timer->setInterval(msec);
+}
+
 QColor GridWidget::getUniverseBorderColour() const
 {
     return universeBorderColour;

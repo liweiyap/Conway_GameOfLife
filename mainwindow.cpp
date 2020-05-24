@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget* parent)
 
     setRowCountSlider();
     setColumnCountSlider();
+    setGenerationSpeedSlider();
     setEvolveOnceButton();
     setStartOrStopEvolvingButton();
     setEmptyGridButton();
@@ -58,6 +59,15 @@ void MainWindow::setColumnCountSlider()
     connect(ui->columnCountSlider, SIGNAL(valueChanged(int)), this, SLOT(setColumnCountInfo(const int&)));
 
     connect(grid, SIGNAL(universeSizeAdjustable(const bool&)), ui->columnCountSlider, SLOT(setEnabled(bool)));
+}
+
+void MainWindow::setGenerationSpeedSlider()
+{
+    ui->generationSpeedSlider->setMaximum(1000);
+    ui->generationSpeedSlider->setMinimum(50);
+    ui->generationSpeedSlider->setValue(300);
+
+    connect(ui->generationSpeedSlider, SIGNAL(valueChanged(int)), grid, SLOT(setTimerInterval(const int&)));
 }
 
 void MainWindow::setEvolveOnceButton()

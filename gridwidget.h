@@ -22,6 +22,7 @@ public:
     int getRowCount() const;
     int getColumnCount() const;
     int getGenerationCount() const;
+    int getTimerInterval() const;
 
     QColor getUniverseBorderColour() const;
     void setUniverseBorderColour(const QColor& colour);
@@ -50,6 +51,7 @@ public slots:
     void setRowCount(const int& nRows);
     void setColumnCount(const int& nColumns);
     void setGenerationCount(const int& nGenerations);
+    void setTimerInterval(const int& msec);
 
     void createGrid(cellPopulationOption pattern);
     void deleteGrid();

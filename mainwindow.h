@@ -24,6 +24,7 @@ private:
     void setLayout();
     void setRowCountSlider();
     void setColumnCountSlider();
+    void setGenerationSpeedSlider();
     void setEvolveOnceButton();
     void setStartOrStopEvolvingButton();
     void setEmptyGridButton();
