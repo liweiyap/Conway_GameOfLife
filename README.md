@@ -19,9 +19,9 @@ Given a board with *m* by *n* cells, each cell has an initial state *live* (1) o
 * Qt 5.14.2
 * Qt Creator 4.12.0
 
-## Example
+## Demo
 
-
+*coming soon...*
 
 ## License
 [GNU General Public License v3.0](https://github.com/liweiyap/Conway_GameOfLife/blob/master/LICENSE)
