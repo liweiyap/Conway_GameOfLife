@@ -24,8 +24,8 @@ Given a board with *m* by *n* cells, each cell has an initial state *live* (1) o
 
 ## Requirements
 
-* Qt 5.14.2
-* Qt Creator 4.12.0
+* Qt (tested with version 5.14.2)
+* Qt Creator (tested with version 4.12.1)
 
 ## License
 
