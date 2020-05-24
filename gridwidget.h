@@ -13,6 +13,7 @@ class GridWidget : public QWidget
     Q_PROPERTY(QColor universeFieldColour READ getUniverseFieldColour WRITE setUniverseFieldColour DESIGNABLE true)
     Q_PROPERTY(QColor cellFieldColour READ getCellFieldColour WRITE setCellFieldColour DESIGNABLE true)
     Q_PROPERTY(bool doEvolve READ getDoEvolve WRITE setDoEvolve DESIGNABLE true)
+    Q_PROPERTY(int generationCount READ getGenerationCount WRITE setGenerationCount DESIGNABLE true)
 
 public:
     explicit GridWidget(QWidget* parent = nullptr);
@@ -20,6 +21,7 @@ public:
 
     int getRowCount() const;
     int getColumnCount() const;
+    int getGenerationCount() const;
 
     QColor getUniverseBorderColour() const;
     void setUniverseBorderColour(const QColor& colour);
@@ -47,6 +49,7 @@ public:
 public slots:
     void setRowCount(const int& nRows);
     void setColumnCount(const int& nColumns);
+    void setGenerationCount(const int& nGenerations);
 
     void createGrid(cellPopulationOption pattern);
     void deleteGrid();
@@ -57,6 +60,9 @@ protected:
     void paintEvent(QPaintEvent* event);
     void mousePressEvent(QMouseEvent* event);
 
+signals:
+    void generationCountChanged(const int& nGenerations);
+
 private:
     /* game settings */
     int rowCount = 20;
@@ -64,6 +70,7 @@ private:
     int** grid;
     QTimer* timer;
     bool doEvolve = false;
+    int generationCount = 0;
 
     void setTimer();
     void evolveContinuous();

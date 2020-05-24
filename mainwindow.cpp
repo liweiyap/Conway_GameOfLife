@@ -9,8 +9,9 @@ MainWindow::MainWindow(QWidget* parent)
 {
     ui->setupUi(this);
     ui->gridLayout->addWidget(grid);
-
     setLayout();
+
+    /* MainWindow is the sender of signals */
     setRowCountSlider();
     setColumnCountSlider();
     setEvolveOnceButton();
@@ -19,6 +20,9 @@ MainWindow::MainWindow(QWidget* parent)
     setFilledGridButton();
     setChequeredGridButton();
     setRandomGridButton();
+
+    /* GridWidget is the sender of signals */
+    connect(grid, SIGNAL(generationCountChanged(const int&)), this, SLOT(setGenerationCountInfo(const int&)));
 }
 
 MainWindow::~MainWindow()
@@ -72,24 +76,32 @@ void MainWindow::setEmptyGridButton()
 {
     ui->emptyGridButton->setStyleSheet("QPushButton {background-color: #3873b3; color: white;}");
     connect(ui->emptyGridButton, &QPushButton::clicked, this, [this]{resetGrid(grid->Empty);});
+    connect(ui->emptyGridButton, SIGNAL(clicked()), this, SLOT(resetGenerationCount()));
+    connect(ui->emptyGridButton, &QPushButton::clicked, this, [this]{setGenerationCountInfo(0);});
 }
 
 void MainWindow::setFilledGridButton()
 {
     ui->filledGridButton->setStyleSheet("QPushButton {background-color: #3873b3; color: white;}");
     connect(ui->filledGridButton, &QPushButton::clicked, this, [this]{resetGrid(grid->Filled);});
+    connect(ui->filledGridButton, SIGNAL(clicked()), this, SLOT(resetGenerationCount()));
+    connect(ui->filledGridButton, &QPushButton::clicked, this, [this]{setGenerationCountInfo(0);});
 }
 
 void MainWindow::setChequeredGridButton()
 {
     ui->chequeredGridButton->setStyleSheet("QPushButton {background-color: #3873b3; color: white;}");
     connect(ui->chequeredGridButton, &QPushButton::clicked, this, [this]{resetGrid(grid->Chequered);});
+    connect(ui->chequeredGridButton, SIGNAL(clicked()), this, SLOT(resetGenerationCount()));
+    connect(ui->chequeredGridButton, &QPushButton::clicked, this, [this]{setGenerationCountInfo(0);});
 }
 
 void MainWindow::setRandomGridButton()
 {
     ui->randomGridButton->setStyleSheet("QPushButton {background-color: #3873b3; color: white;}");
     connect(ui->randomGridButton, &QPushButton::clicked, this, [this]{resetGrid(grid->Random);});
+    connect(ui->randomGridButton, SIGNAL(clicked()), this, SLOT(resetGenerationCount()));
+    connect(ui->randomGridButton, &QPushButton::clicked, this, [this]{setGenerationCountInfo(0);});
 }
 
 void MainWindow::editStartOrStopEvolvingButtonHelper(const char* cmd)
@@ -122,6 +134,16 @@ void MainWindow::setColumnCountInfo(const int& nColumns)
     ui->columnCountSliderInfo->setText(newStr);
 }
 
+void MainWindow::setGenerationCountInfo(const int& nGenerations)
+{
+    int newStrLen = snprintf(NULL, 0, "No. of generations: %d", nGenerations) + 1;
+    char buffer[newStrLen];
+    snprintf(buffer, newStrLen, "No. of generations: %d", nGenerations);
+
+    QString newStr = buffer;
+    ui->generationCountInfo->setText(newStr);
+}
+
 void MainWindow::editStartOrStopEvolvingButton()
 {
     if (grid->getDoEvolve())
@@ -142,4 +164,9 @@ void MainWindow::resetGrid(GridWidget::cellPopulationOption pattern)
     grid->deleteGrid();
     grid->createGrid(pattern);
     grid->update();
+}
+
+void MainWindow::resetGenerationCount()
+{
+    grid->setGenerationCount(0);
 }

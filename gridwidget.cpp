@@ -49,6 +49,16 @@ void GridWidget::setColumnCount(const int& nColumns)
     update();
 }
 
+int GridWidget::getGenerationCount() const
+{
+    return generationCount;
+}
+
+void GridWidget::setGenerationCount(const int& nGenerations)
+{
+    generationCount = nGenerations;
+}
+
 QColor GridWidget::getUniverseBorderColour() const
 {
     return universeBorderColour;
@@ -276,6 +286,7 @@ qreal GridWidget::calcCellHeight()
 void GridWidget::evolveOnce()
 {
     evolveNextGeneration(grid, rowCount, columnCount);
+    emit generationCountChanged(++generationCount);
     update();
 }
 

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>475</height>
+    <height>505</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -208,7 +208,7 @@
            </font>
           </property>
           <property name="text">
-           <string>Generation: 0</string>
+           <string>No. of generations: 0</string>
           </property>
          </widget>
         </item>
