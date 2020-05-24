@@ -17,14 +17,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp \
-    gridwidget.cpp \
-    gamelogic.cpp
+    src/cpp/mainwindow.cpp \
+    src/cpp/gridwidget.cpp \
+    src/cpp/gamelogic.cpp
 
 HEADERS += \
-    mainwindow.h \
-    gridwidget.h \
-    gamelogic.h
+    src/mainwindow.h \
+    src/gridwidget.h \
+    src/gamelogic.h
 
 FORMS += \
     mainwindow.ui
