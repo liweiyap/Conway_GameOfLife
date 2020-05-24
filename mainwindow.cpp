@@ -45,7 +45,6 @@ void MainWindow::setRowCountSlider()
     connect(ui->rowCountSlider, SIGNAL(valueChanged(int)), this, SLOT(setRowCountInfo(const int&)));
 
     connect(grid, SIGNAL(universeSizeAdjustable(const bool&)), ui->rowCountSlider, SLOT(setEnabled(bool)));
-    connect(grid, SIGNAL(universeSizeAdjustable(const bool&)), ui->rowCountSlider, SLOT(setEnabled(bool)));
 }
 
 void MainWindow::setColumnCountSlider()
@@ -58,7 +57,6 @@ void MainWindow::setColumnCountSlider()
     connect(ui->columnCountSlider, SIGNAL(valueChanged(int)), grid, SLOT(setColumnCount(const int&)));
     connect(ui->columnCountSlider, SIGNAL(valueChanged(int)), this, SLOT(setColumnCountInfo(const int&)));
 
-    connect(grid, SIGNAL(universeSizeAdjustable(const bool&)), ui->columnCountSlider, SLOT(setEnabled(bool)));
     connect(grid, SIGNAL(universeSizeAdjustable(const bool&)), ui->columnCountSlider, SLOT(setEnabled(bool)));
 }
 
