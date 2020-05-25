@@ -20,7 +20,10 @@ Given a board with *m* by *n* cells, each cell has an initial state *live* (1) o
 
 ## Demo
 
-*coming soon...*
+<p align="center">
+  <img src="assets/chequered_slower.gif" width="600" />
+  <img src="assets/random_gen275.gif" width="600" />
+</p>
 
 ## Requirements
 
