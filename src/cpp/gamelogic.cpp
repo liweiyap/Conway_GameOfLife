@@ -9,7 +9,7 @@ int neighbourSum(int** grid, const int& rowCount, const int& columnCount, const 
     {
         for (int x = std::max(columnIdx-1, 0); x < std::min(columnIdx+2, columnCount); ++x)
         {
-            sum += grid[y][x] & 1;  // "& 1" because of the bitwise OR update in "gameOfLife" function
+            sum += grid[y][x] & 1;  // "& 1" because of the bitwise OR update in "evolveNextGeneration" function
         }
     }
     return sum -= grid[rowIdx][columnIdx] & 1;
