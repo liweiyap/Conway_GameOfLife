@@ -109,6 +109,16 @@ void GridWidget::setCellFieldColour(const QColor& colour)
     cellFieldColour = colour;
 }
 
+qreal GridWidget::getCellGridMargin() const
+{
+    return cellGridMargin;
+}
+
+void GridWidget::setCellGridMargin(const qreal& margin)
+{
+    cellGridMargin = margin;
+}
+
 bool GridWidget::getDoEvolve() const
 {
     return doEvolve;
@@ -151,9 +161,9 @@ void GridWidget::paintCellGrid(QPainter& painter)
         {
             if (grid[rowIdx][columnIdx] == 1)
             {
-                qreal cellLeftIdx = 0.75 * universeBorderThickness + calcCellWidth() * columnIdx;
-                qreal cellTopIdx = 0.75 * universeBorderThickness + calcCellHeight() * rowIdx;
-                QRect cellField(cellLeftIdx, cellTopIdx, calcCellWidth(), calcCellHeight());
+                qreal cellLeftIdx = 0.75 * universeBorderThickness + calcCellWidth() * columnIdx + cellGridMargin;
+                qreal cellTopIdx = 0.75 * universeBorderThickness + calcCellHeight() * rowIdx + cellGridMargin;
+                QRect cellField(cellLeftIdx, cellTopIdx, calcCellWidth() - cellGridMargin, calcCellHeight() - cellGridMargin);
                 painter.setBrush(QBrush(cellFieldColour));
                 painter.fillRect(cellField, painter.brush());
             }

@@ -12,6 +12,7 @@ class GridWidget : public QWidget
     Q_PROPERTY(qreal universeBorderThickness READ getUniverseBorderThickness WRITE setUniverseBorderThickness DESIGNABLE true)
     Q_PROPERTY(QColor universeFieldColour READ getUniverseFieldColour WRITE setUniverseFieldColour DESIGNABLE true)
     Q_PROPERTY(QColor cellFieldColour READ getCellFieldColour WRITE setCellFieldColour DESIGNABLE true)
+    Q_PROPERTY(qreal cellGridMargin READ getCellGridMargin WRITE setCellGridMargin DESIGNABLE true)
     Q_PROPERTY(bool doEvolve READ getDoEvolve WRITE setDoEvolve DESIGNABLE true)
     Q_PROPERTY(int generationCount READ getGenerationCount WRITE setGenerationCount DESIGNABLE true)
 
@@ -35,6 +36,9 @@ public:
 
     QColor getCellFieldColour() const;
     void setCellFieldColour(const QColor& colour);
+
+    qreal getCellGridMargin() const;
+    void setCellGridMargin(const qreal& margin);
 
     bool getDoEvolve() const;
     void setDoEvolve(const bool& cmd);
@@ -90,6 +94,7 @@ private:
     qreal universeBorderThickness = 8.0;
     QColor universeFieldColour = Qt::white;
     QColor cellFieldColour = Qt::black;
+    qreal cellGridMargin = 1.0;
 
     void setTransparency();
 
