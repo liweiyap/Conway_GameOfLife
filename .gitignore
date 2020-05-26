@@ -2,3 +2,4 @@ conwayGameOfLife.pro.user
 *.autosave
 .DS_Store
 .qmake.stash
+build*
