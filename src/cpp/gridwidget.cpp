@@ -14,7 +14,6 @@ GridWidget::GridWidget(QWidget* parent) : QWidget(parent)
     setTransparency();
     setTimer();
     createGrid(lastDefaultPattern);
-    std::srand(static_cast<unsigned int>(std::time(nullptr)));
 }
 
 GridWidget::~GridWidget()
@@ -263,6 +262,7 @@ int GridWidget::randomCellStateGenerator()
 
 void GridWidget::setTimer()
 {
+    std::srand(static_cast<unsigned int>(std::time(nullptr)));
     timer = new QTimer(this);
     timer->setInterval(300);
     connect(timer, SIGNAL(timeout()), this, SLOT(evolveOnce()));
