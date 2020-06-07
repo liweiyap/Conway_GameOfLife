@@ -9,7 +9,7 @@
 #include "gridwidget.h"
 #include "gamelogic.h"
 
-GridWidget::GridWidget(QWidget* parent) : QWidget(parent)
+GridWidget::GridWidget(QWidget* parent) : QWidget(parent), randNumGenerator((std::random_device())()), randDistribution(1, 10)
 {
     setTransparency();
     setTimer();
@@ -249,13 +249,12 @@ void GridWidget::createRandomGrid()
 
 int GridWidget::randomCellStateGenerator()
 {
-    int randNum = rand() % 10;
+    int randNum = randDistribution(randNumGenerator) % 10;
     return (randNum < 5) ? 0 : 1;
 }
 
 void GridWidget::setTimer()
 {
-    std::srand(static_cast<unsigned int>(std::time(nullptr)));
     timer = new QTimer(this);
     timer->setInterval(300);
     connect(timer, SIGNAL(timeout()), this, SLOT(evolveOnce()));

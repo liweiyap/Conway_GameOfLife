@@ -2,6 +2,7 @@
 #define GRIDWIDGET_H
 
 #include <QWidget>
+#include <random>
 
 class GridWidget : public QWidget
 {
@@ -79,6 +80,8 @@ private:
     bool doEvolve = false;
     int generationCount = 0;
     cellPopulationOption lastDefaultPattern = Chequered;
+    std::mt19937 randNumGenerator;
+    std::uniform_int_distribution<int> randDistribution;
 
     void setTimer();
     void evolveContinuous();
