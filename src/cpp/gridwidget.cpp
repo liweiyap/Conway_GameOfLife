@@ -249,8 +249,8 @@ void GridWidget::createRandomGrid()
 
 int GridWidget::randomCellStateGenerator()
 {
-    int randNum = randDistribution(randNumGenerator) % 10;
-    return (randNum < 5) ? 0 : 1;
+    int randNum = randDistribution(randNumGenerator);
+    return (randNum <= 5) ? 0 : 1;
 }
 
 void GridWidget::setTimer()
