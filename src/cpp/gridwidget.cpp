@@ -1,6 +1,4 @@
 #include <cmath>
-#include <cstdlib>
-#include <ctime>
 
 #include <QPainter>
 #include <QMouseEvent>
