@@ -12,14 +12,20 @@ QT_END_NAMESPACE
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
+    Q_PROPERTY(QColor buttonTextColour READ getButtonTextColour WRITE setButtonTextColour DESIGNABLE true)
 
 public:
     MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
 
+    QColor getButtonTextColour() const;
+    void setButtonTextColour(const QColor& colour);
+
 private:
     Ui::MainWindow* ui;
     GridWidget* grid;
+
+    QColor buttonTextColour = Qt::white;
 
     void setLayout();
     void setRowCountSlider();

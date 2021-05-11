@@ -29,6 +29,16 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+QColor MainWindow::getButtonTextColour() const
+{
+    return buttonTextColour;
+}
+
+void MainWindow::setButtonTextColour(const QColor& colour)
+{
+    buttonTextColour = colour;
+}
+
 void MainWindow::setLayout()
 {
     ui->mainLayout->setStretchFactor(ui->controlLayout, 4);
@@ -74,20 +84,20 @@ void MainWindow::setGenerationSpeedSlider()
 
 void MainWindow::setEvolveOnceButton()
 {
-    ui->evolveOnceButton->setStyleSheet("QPushButton {background-color: " + grid->getUniverseBorderColour().name() + "; color: white;}");
+    ui->evolveOnceButton->setStyleSheet("QPushButton {background-color: " + grid->getUniverseBorderColour().name() + "; color: " + getButtonTextColour().name() + ";}");
     connect(ui->evolveOnceButton, SIGNAL(clicked()), grid, SLOT(evolveOnce()));
 }
 
 void MainWindow::setStartOrStopEvolvingButton()
 {
-    ui->startOrStopEvolvingButton->setStyleSheet("QPushButton {background-color: " + grid->getUniverseBorderColour().name() + "; color: white;}");
+    ui->startOrStopEvolvingButton->setStyleSheet("QPushButton {background-color: " + grid->getUniverseBorderColour().name() + "; color: " + getButtonTextColour().name() + ";}");
     connect(ui->startOrStopEvolvingButton, SIGNAL(clicked()), this, SLOT(editStartOrStopEvolvingButton()));
     connect(ui->startOrStopEvolvingButton, SIGNAL(clicked()), grid, SLOT(toggleEvolveDecision()));
 }
 
 void MainWindow::setEmptyGridButton()
 {
-    ui->emptyGridButton->setStyleSheet("QPushButton {background-color: " + grid->getUniverseBorderColour().name() + "; color: white;}");
+    ui->emptyGridButton->setStyleSheet("QPushButton {background-color: " + grid->getUniverseBorderColour().name() + "; color: " + getButtonTextColour().name() + ";}");
     connect(ui->emptyGridButton, &QPushButton::clicked, this, [this]{resetGrid(grid->Empty);});
     connect(ui->emptyGridButton, SIGNAL(clicked()), this, SLOT(resetGenerationCount()));
     connect(ui->emptyGridButton, &QPushButton::clicked, this, [this]{setGenerationCountInfo(0);});
@@ -95,7 +105,7 @@ void MainWindow::setEmptyGridButton()
 
 void MainWindow::setFilledGridButton()
 {
-    ui->filledGridButton->setStyleSheet("QPushButton {background-color: " + grid->getUniverseBorderColour().name() + "; color: white;}");
+    ui->filledGridButton->setStyleSheet("QPushButton {background-color: " + grid->getUniverseBorderColour().name() + "; color: " + getButtonTextColour().name() + ";}");
     connect(ui->filledGridButton, &QPushButton::clicked, this, [this]{resetGrid(grid->Filled);});
     connect(ui->filledGridButton, SIGNAL(clicked()), this, SLOT(resetGenerationCount()));
     connect(ui->filledGridButton, &QPushButton::clicked, this, [this]{setGenerationCountInfo(0);});
@@ -103,7 +113,7 @@ void MainWindow::setFilledGridButton()
 
 void MainWindow::setChequeredGridButton()
 {
-    ui->chequeredGridButton->setStyleSheet("QPushButton {background-color: " + grid->getUniverseBorderColour().name() + "; color: white;}");
+    ui->chequeredGridButton->setStyleSheet("QPushButton {background-color: " + grid->getUniverseBorderColour().name() + "; color: " + getButtonTextColour().name() + ";}");
     connect(ui->chequeredGridButton, &QPushButton::clicked, this, [this]{resetGrid(grid->Chequered);});
     connect(ui->chequeredGridButton, SIGNAL(clicked()), this, SLOT(resetGenerationCount()));
     connect(ui->chequeredGridButton, &QPushButton::clicked, this, [this]{setGenerationCountInfo(0);});
@@ -111,7 +121,7 @@ void MainWindow::setChequeredGridButton()
 
 void MainWindow::setRandomGridButton()
 {
-    ui->randomGridButton->setStyleSheet("QPushButton {background-color: " + grid->getUniverseBorderColour().name() + "; color: white;}");
+    ui->randomGridButton->setStyleSheet("QPushButton {background-color: " + grid->getUniverseBorderColour().name() + "; color: " + getButtonTextColour().name() + ";}");
     connect(ui->randomGridButton, &QPushButton::clicked, this, [this]{resetGrid(grid->Random);});
     connect(ui->randomGridButton, SIGNAL(clicked()), this, SLOT(resetGenerationCount()));
     connect(ui->randomGridButton, &QPushButton::clicked, this, [this]{setGenerationCountInfo(0);});
